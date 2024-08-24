@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    
+    display: flex;/*imagem uma ao lado da outra*/
+    justify-content: center;/*Alinhado no center*/
+    align-items: center;/*Alinhado os itens*/
+    min-height: 100vh;/*Altura minima tela toda*/
+    background: #050505;/*Cor do corpo da pagina*/
+    background-image: url(IMAGEM11.jpg);
+    background-repeat:  no-repeat;
+    background-size: cover;
+}
+
+.box:hover{
+    animation-play-state: paused;
+}
+.box{
+    position: relative;/*A frente de tudo*/
+    width: 200px;/*Altura*/
+    height: 300px;/*Largura*/
+    transform-style: preserve-3d;/*Aqui criamos o formato 3D*/
+    animation: animate 30s linear infinite;
+}
+@keyframes animate{/*Rotação de 360*/
+    0%{
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100%{
+        transform: perspective(1000px) rotatey(360deg);
+    }
+}
+.box span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform: rotateY(calc(var(--i) *45deg))translateZ(240px);
+    
+}
+.box span::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+.box span img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: drop-shadow(2px 0 5px #a21eee    );
+
+}
